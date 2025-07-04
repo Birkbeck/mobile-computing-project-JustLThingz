@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="navEditor-manualLayoutAlgorithm2">
+    <option name="myPositions">
+      <map>
+        <entry key="nav_graph.xml">
+          <value>
+            <LayoutPositions>
+              <option name="myPositions">
+                <map>
+                  <entry key="addRecipeFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="558" />
+                            <option name="y" value="-58" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="editRecipeFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="744" />
+                            <option name="y" value="368" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="homeFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="12" />
+                            <option name="y" value="54" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_homeFragment_to_recipeListFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="recipeListFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="256" />
+                            <option name="y" value="54" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_recipeListFragment_to_addRecipeFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_recipeListFragment_to_recipeViewFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="recipeViewFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="500" />
+                            <option name="y" value="368" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_recipeViewFragment_to_editRecipeFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </LayoutPositions>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
