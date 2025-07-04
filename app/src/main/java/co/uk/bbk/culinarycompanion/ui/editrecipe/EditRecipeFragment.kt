@@ -1,4 +1,4 @@
-package co.uk.bbk.culinarycompanion.ui.addrecipe
+package co.uk.bbk.culinarycompanion.ui.editrecipe
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,25 +8,25 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import co.uk.bbk.culinarycompanion.databinding.FragmentAddRecipeBinding
+import co.uk.bbk.culinarycompanion.databinding.FragmentEditRecipeBinding
 
 /**
- * AddRecipeFragment allows users to create new recipes
- * Handles input validation and saving to database
+ * EditRecipeFragment allows users to modify existing recipes
+ * Pre-populates fields with existing recipe data
  */
-class AddRecipeFragment : Fragment() {
+class EditRecipeFragment : Fragment() {
 
-    private var _binding: FragmentAddRecipeBinding? = null
+    private var _binding: FragmentEditRecipeBinding? = null
     private val binding get() = _binding!!
 
-    private val args: AddRecipeFragmentArgs by navArgs()
+    private val args: EditRecipeFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentAddRecipeBinding.inflate(inflater, container, false)
+        _binding = FragmentEditRecipeBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -35,6 +35,10 @@ class AddRecipeFragment : Fragment() {
 
         setupButtons()
         setupImagePicker()
+
+        // TODO: Load recipe data from ViewModel
+        // For now, show placeholder data
+        loadPlaceholderData()
     }
 
     private fun setupButtons() {
@@ -59,13 +63,17 @@ class AddRecipeFragment : Fragment() {
         }
     }
 
+    private fun loadPlaceholderData() {
+        // This will be replaced with actual data from the database
+        binding.etRecipeName.setText("Recipe_Name...")
+        binding.etIngredients.setText("1) 3 Eggs\n2) 200g flour\n3) 1tsp baking powder\nTap to Edit...")
+        binding.etRecipeInstructions.setText("1) crack eggs into bowl\n2) add flour\n3) add baking powder\n4) whisk until combined\nTap to Edit...")
+    }
+
     private fun hasUnsavedChanges(): Boolean {
-        return binding.etAddRecipeName.text.isNotEmpty() ||
-                binding.etIngredients.text.isNotEmpty() ||
-                binding.etRecipeInstructions.text.isNotEmpty() ||
-                binding.etProtein.text.isNotEmpty() ||
-                binding.etCarbs.text.isNotEmpty() ||
-                binding.etFats.text.isNotEmpty()
+        // TODO: Compare with original values
+        // For now, return false
+        return false
     }
 
     private fun showUnsavedChangesDialog() {
@@ -81,12 +89,12 @@ class AddRecipeFragment : Fragment() {
 
     private fun saveRecipe() {
         // Validate input
-        val recipeName = binding.etAddRecipeName.text.toString().trim()
+        val recipeName = binding.etRecipeName.text.toString().trim()
         val ingredients = binding.etIngredients.text.toString().trim()
         val instructions = binding.etRecipeInstructions.text.toString().trim()
 
         if (recipeName.isEmpty()) {
-            binding.etAddRecipeName.error = "Recipe name is required"
+            binding.etRecipeName.error = "Recipe name is required"
             return
         }
 
@@ -105,8 +113,8 @@ class AddRecipeFragment : Fragment() {
         val carbs = binding.etCarbs.text.toString().toDoubleOrNull()
         val fat = binding.etFats.text.toString().toDoubleOrNull()
 
-        // TODO: Save to database via ViewModel
-        Toast.makeText(context, "Recipe saved!", Toast.LENGTH_SHORT).show()
+        // TODO: Update in database via ViewModel
+        Toast.makeText(context, "Recipe updated!", Toast.LENGTH_SHORT).show()
         findNavController().navigateUp()
     }
 
