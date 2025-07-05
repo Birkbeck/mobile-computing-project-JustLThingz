@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import co.uk.bbk.culinarycompanion.R
 import co.uk.bbk.culinarycompanion.CulinaryCompanionApplication
 import co.uk.bbk.culinarycompanion.databinding.FragmentRecipeViewBinding
 
