@@ -6,8 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import co.uk.bbk.culinarycompanion.CulinaryCompanionApplication
 import co.uk.bbk.culinarycompanion.databinding.FragmentAddRecipeBinding
 
 /**
@@ -20,6 +22,13 @@ class AddRecipeFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val args: AddRecipeFragmentArgs by navArgs()
+
+    // Initialize ViewModel
+    private val viewModel: AddRecipeViewModel by viewModels {
+        AddRecipeViewModelFactory(
+            (requireActivity().application as CulinaryCompanionApplication).repository
+        )
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -105,7 +114,17 @@ class AddRecipeFragment : Fragment() {
         val carbs = binding.etCarbs.text.toString().toDoubleOrNull()
         val fat = binding.etFats.text.toString().toDoubleOrNull()
 
-        // TODO: Save to database via ViewModel
+        // Save to database via ViewModel
+        viewModel.saveRecipe(
+            title = recipeName,
+            ingredients = ingredients,
+            instructions = instructions,
+            category = args.categoryName,
+            protein = protein,
+            carbs = carbs,
+            fat = fat
+        )
+
         Toast.makeText(context, "Recipe saved!", Toast.LENGTH_SHORT).show()
         findNavController().navigateUp()
     }

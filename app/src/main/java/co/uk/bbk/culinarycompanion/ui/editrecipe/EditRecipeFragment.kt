@@ -6,8 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import co.uk.bbk.culinarycompanion.CulinaryCompanionApplication
 import co.uk.bbk.culinarycompanion.databinding.FragmentEditRecipeBinding
 
 /**
@@ -20,6 +22,16 @@ class EditRecipeFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val args: EditRecipeFragmentArgs by navArgs()
+
+    // Initialize ViewModel
+    private val viewModel: EditRecipeViewModel by viewModels {
+        EditRecipeViewModelFactory(
+            (requireActivity().application as CulinaryCompanionApplication).repository,
+            args.recipeId
+        )
+    }
+
+    private var originalRecipe: co.uk.bbk.culinarycompanion.data.Recipe? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,10 +47,7 @@ class EditRecipeFragment : Fragment() {
 
         setupButtons()
         setupImagePicker()
-
-        // TODO: Load recipe data from ViewModel
-        // For now, show placeholder data
-        loadPlaceholderData()
+        observeRecipe()
     }
 
     private fun setupButtons() {
@@ -63,6 +72,26 @@ class EditRecipeFragment : Fragment() {
         }
     }
 
+    private fun observeRecipe() {
+        viewModel.recipe.observe(viewLifecycleOwner) { recipe ->
+            recipe?.let {
+                originalRecipe = it
+                loadRecipeData(it)
+            }
+        }
+    }
+
+    private fun loadRecipeData(recipe: co.uk.bbk.culinarycompanion.data.Recipe) {
+        binding.etRecipeName.setText(recipe.title)
+        binding.etIngredients.setText(recipe.ingredients)
+        binding.etRecipeInstructions.setText(recipe.instructions)
+
+        // Load macros if available
+        recipe.protein?.let { binding.etProtein.setText(it.toString()) }
+        recipe.carbs?.let { binding.etCarbs.setText(it.toString()) }
+        recipe.fat?.let { binding.etFats.setText(it.toString()) }
+    }
+
     private fun loadPlaceholderData() {
         // This will be replaced with actual data from the database
         binding.etRecipeName.setText("Recipe_Name...")
@@ -71,8 +100,14 @@ class EditRecipeFragment : Fragment() {
     }
 
     private fun hasUnsavedChanges(): Boolean {
-        // TODO: Compare with original values
-        // For now, return false
+        originalRecipe?.let { original ->
+            return binding.etRecipeName.text.toString() != original.title ||
+                    binding.etIngredients.text.toString() != original.ingredients ||
+                    binding.etRecipeInstructions.text.toString() != original.instructions ||
+                    binding.etProtein.text.toString() != (original.protein?.toString() ?: "") ||
+                    binding.etCarbs.text.toString() != (original.carbs?.toString() ?: "") ||
+                    binding.etFats.text.toString() != (original.fat?.toString() ?: "")
+        }
         return false
     }
 
@@ -113,7 +148,16 @@ class EditRecipeFragment : Fragment() {
         val carbs = binding.etCarbs.text.toString().toDoubleOrNull()
         val fat = binding.etFats.text.toString().toDoubleOrNull()
 
-        // TODO: Update in database via ViewModel
+        // Update in database via ViewModel
+        viewModel.updateRecipe(
+            title = recipeName,
+            ingredients = ingredients,
+            instructions = instructions,
+            protein = protein,
+            carbs = carbs,
+            fat = fat
+        )
+
         Toast.makeText(context, "Recipe updated!", Toast.LENGTH_SHORT).show()
         findNavController().navigateUp()
     }

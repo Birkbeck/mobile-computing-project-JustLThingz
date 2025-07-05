@@ -6,9 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import co.uk.bbk.culinarycompanion.CulinaryCompanionApplication
 import co.uk.bbk.culinarycompanion.data.Recipe
 import co.uk.bbk.culinarycompanion.databinding.FragmentRecipeListBinding
 
@@ -24,6 +26,14 @@ class RecipeListFragment : Fragment() {
     private val args: RecipeListFragmentArgs by navArgs()
     private lateinit var recipeAdapter: RecipeAdapter
     private var isDeleteMode = false
+
+    // Initialize ViewModel with factory
+    private val viewModel: RecipeListViewModel by viewModels {
+        RecipeListViewModelFactory(
+            (requireActivity().application as CulinaryCompanionApplication).repository,
+            args.categoryName
+        )
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,9 +51,7 @@ class RecipeListFragment : Fragment() {
         setupRecyclerView()
         setupSearchView()
         setupButtons()
-
-        // For now, show empty state
-        showEmptyState()
+        observeRecipes()
     }
 
     private fun setupUI() {
@@ -62,7 +70,7 @@ class RecipeListFragment : Fragment() {
                 }
             },
             onDeleteClick = { recipe ->
-                // Will implement delete functionality with ViewModel
+                viewModel.deleteRecipe(recipe)
             }
         )
 
@@ -79,7 +87,7 @@ class RecipeListFragment : Fragment() {
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                // Will implement search with ViewModel
+                viewModel.searchRecipes(newText ?: "")
                 return true
             }
         })
@@ -107,6 +115,17 @@ class RecipeListFragment : Fragment() {
             binding.btnDeleteRecipe.text = "Finish Delete"
         } else {
             binding.btnDeleteRecipe.text = "Delete"
+        }
+    }
+
+    private fun observeRecipes() {
+        viewModel.recipes.observe(viewLifecycleOwner) { recipes ->
+            if (recipes.isEmpty()) {
+                showEmptyState()
+            } else {
+                showRecipeList()
+                recipeAdapter.submitList(recipes)
+            }
         }
     }
 

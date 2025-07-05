@@ -5,8 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import co.uk.bbk.culinarycompanion.CulinaryCompanionApplication
 import co.uk.bbk.culinarycompanion.databinding.FragmentRecipeViewBinding
 
 /**
@@ -19,6 +21,14 @@ class RecipeViewFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val args: RecipeViewFragmentArgs by navArgs()
+
+    // Initialize ViewModel
+    private val viewModel: RecipeViewViewModel by viewModels {
+        RecipeViewViewModelFactory(
+            (requireActivity().application as CulinaryCompanionApplication).repository,
+            args.recipeId
+        )
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,10 +43,7 @@ class RecipeViewFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setupButtons()
-
-        // TODO: Load recipe data from ViewModel
-        // For now, show placeholder data
-        displayPlaceholderData()
+        observeRecipe()
     }
 
     private fun setupButtons() {
@@ -47,6 +54,29 @@ class RecipeViewFragment : Fragment() {
         binding.btnEditRecipe.setOnClickListener {
             navigateToEditRecipe()
         }
+    }
+
+    private fun observeRecipe() {
+        viewModel.recipe.observe(viewLifecycleOwner) { recipe ->
+            recipe?.let {
+                displayRecipe(it)
+            }
+        }
+    }
+
+    private fun displayRecipe(recipe: co.uk.bbk.culinarycompanion.data.Recipe) {
+        binding.tvRecipeName.text = recipe.title
+        binding.tvIngredients.text = recipe.ingredients
+        binding.tvRecipeInstructions.text = recipe.instructions
+
+        // Display macros if available
+        val macrosList = mutableListOf<String>()
+        recipe.protein?.let { macrosList.add("Protein: $it g") }
+        recipe.carbs?.let { macrosList.add("Carbs: $it g") }
+        recipe.fat?.let { macrosList.add("Fats: $it g") }
+
+        // Update the macros display in the layout
+        // You might need to adjust this based on your exact layout
     }
 
     private fun displayPlaceholderData() {
