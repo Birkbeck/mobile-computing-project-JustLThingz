@@ -11,6 +11,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import co.uk.bbk.culinarycompanion.CulinaryCompanionApplication
 import co.uk.bbk.culinarycompanion.databinding.FragmentAddRecipeBinding
+import co.uk.bbk.culinarycompanion.ui.dialog.UnsavedChangesDialog
+import co.uk.bbk.culinarycompanion.ui.dialog.ImageUploadDialog
 
 /**
  * AddRecipeFragment allows users to create new recipes
@@ -78,14 +80,22 @@ class AddRecipeFragment : Fragment() {
     }
 
     private fun showUnsavedChangesDialog() {
-        // TODO: Implement dialog
-        // For now, just navigate back
-        findNavController().navigateUp()
+        UnsavedChangesDialog {
+            findNavController().navigateUp()
+        }.show(childFragmentManager, "unsaved_changes")
     }
 
     private fun showImageUploadDialog() {
-        // TODO: Implement image upload dialog
-        Toast.makeText(context, "Image upload coming soon", Toast.LENGTH_SHORT).show()
+        ImageUploadDialog(
+            onTakePhoto = {
+                // TODO: Implement camera functionality
+                Toast.makeText(context, "Camera feature coming soon", Toast.LENGTH_SHORT).show()
+            },
+            onChooseFromGallery = {
+                // TODO: Implement gallery selection
+                Toast.makeText(context, "Gallery feature coming soon", Toast.LENGTH_SHORT).show()
+            }
+        ).show(childFragmentManager, "image_upload")
     }
 
     private fun saveRecipe() {

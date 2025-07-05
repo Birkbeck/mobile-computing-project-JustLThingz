@@ -76,7 +76,7 @@ class RecipeViewFragment : Fragment() {
         recipe.fat?.let { macrosList.add("Fats: $it g") }
 
         // Update the macros display in the layout
-        // You might need to adjust this based on your exact layout
+        // Might need to adjust this based on layout
     }
 
     private fun displayPlaceholderData() {

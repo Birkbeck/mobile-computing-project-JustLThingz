@@ -1,4 +1,4 @@
-package co.uk.bbk.culinarycompanion.ui.dialogs
+package co.uk.bbk.culinarycompanion.ui.dialog
 
 import android.app.Dialog
 import android.os.Bundle

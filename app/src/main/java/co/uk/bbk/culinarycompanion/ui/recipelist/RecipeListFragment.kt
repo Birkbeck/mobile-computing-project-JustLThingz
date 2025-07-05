@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import co.uk.bbk.culinarycompanion.CulinaryCompanionApplication
 import co.uk.bbk.culinarycompanion.data.Recipe
 import co.uk.bbk.culinarycompanion.databinding.FragmentRecipeListBinding
+import co.uk.bbk.culinarycompanion.ui.dialog.DeleteConfirmationDialog
 
 /**
  * RecipeListFragment displays a list of recipes for a specific category
@@ -70,7 +71,7 @@ class RecipeListFragment : Fragment() {
                 }
             },
             onDeleteClick = { recipe ->
-                viewModel.deleteRecipe(recipe)
+                showDeleteConfirmation(recipe)
             }
         )
 
@@ -152,6 +153,12 @@ class RecipeListFragment : Fragment() {
         val action = RecipeListFragmentDirections
             .actionRecipeListFragmentToAddRecipeFragment(args.categoryName)
         findNavController().navigate(action)
+    }
+
+    private fun showDeleteConfirmation(recipe: Recipe) {
+        DeleteConfirmationDialog(recipe.title) {
+            viewModel.deleteRecipe(recipe)
+        }.show(childFragmentManager, "delete_confirmation")
     }
 
     override fun onDestroyView() {
