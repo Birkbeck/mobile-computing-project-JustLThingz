@@ -106,23 +106,26 @@
                     android:padding="12dp">
 
                     <TextView
+                        android:id="@+id/tv_protein"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/macro_protein_format"
+                        android:text="Protein: - g"
                         android:textSize="12sp"
                         android:layout_marginBottom="4dp" />
 
                     <TextView
+                        android:id="@+id/tv_carbs"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/macro_carbs_format"
+                        android:text="Carbs: - g"
                         android:textSize="12sp"
                         android:layout_marginBottom="4dp" />
 
                     <TextView
+                        android:id="@+id/tv_fats"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/macro_fats_format"
+                        android:text="Fats: - g"
                         android:textSize="12sp" />
 
                 </LinearLayout>

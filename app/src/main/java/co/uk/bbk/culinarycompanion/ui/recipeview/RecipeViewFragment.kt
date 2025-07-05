@@ -8,8 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import co.uk.bbk.culinarycompanion.R
 import co.uk.bbk.culinarycompanion.CulinaryCompanionApplication
+import co.uk.bbk.culinarycompanion.R
 import co.uk.bbk.culinarycompanion.databinding.FragmentRecipeViewBinding
 
 /**
@@ -23,7 +23,7 @@ class RecipeViewFragment : Fragment() {
 
     private val args: RecipeViewFragmentArgs by navArgs()
 
-    // Initialise ViewModel
+    // Initialize ViewModel
     private val viewModel: RecipeViewViewModel by viewModels {
         RecipeViewViewModelFactory(
             (requireActivity().application as CulinaryCompanionApplication).repository,
@@ -70,26 +70,29 @@ class RecipeViewFragment : Fragment() {
         binding.tvIngredients.text = recipe.ingredients
         binding.tvRecipeInstructions.text = recipe.instructions
 
-        // Find the TextViews for macros (you'll need to add IDs to them in the layout)
-        // For now, let's update the entire macros section
-        val macrosText = buildString {
-            recipe.protein?.let { append(getString(R.string.macro_protein_format, it.toString())) }
-            recipe.carbs?.let {
-                if (isNotEmpty()) append("\n")
-                append(getString(R.string.macro_carbs_format, it.toString()))
+        // Update macros - check if the TextViews have IDs
+        try {
+            // If you have individual TextViews with IDs
+            binding.tvProtein.text = if (recipe.protein != null) {
+                getString(R.string.macro_protein_format, recipe.protein.toString())
+            } else {
+                "Protein: - g"
             }
-            recipe.fat?.let {
-                if (isNotEmpty()) append("\n")
-                append(getString(R.string.macro_fats_format, it.toString()))
+
+            binding.tvCarbs.text = if (recipe.carbs != null) {
+                getString(R.string.macro_carbs_format, recipe.carbs.toString())
+            } else {
+                "Carbs: - g"
             }
-        }
 
-        // If you have a single TextView for all macros, use:
-        // binding.tvMacros.text = macrosText
-
-        // Or hide the macros section if no values
-        if (macrosText.isEmpty()) {
-            binding.layoutMacros.visibility = View.GONE
+            binding.tvFats.text = if (recipe.fat != null) {
+                getString(R.string.macro_fats_format, recipe.fat.toString())
+            } else {
+                "Fats: - g"
+            }
+        } catch (e: Exception) {
+            // If the TextViews don't have IDs, the macros won't update
+            // You need to add the IDs to the layout file
         }
     }
 
