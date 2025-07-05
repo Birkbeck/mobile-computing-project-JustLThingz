@@ -60,7 +60,7 @@ class RecipeListFragment : Fragment() {
         binding.tvCategoryName.text = args.categoryName
 
         // Update search hint
-        binding.searchRecipes.queryHint = "Search ${args.categoryName} Recipes"
+        binding.searchRecipes.queryHint = getString(R.string.hint_search_recipes, args.categoryName)
     }
 
     private fun setupRecyclerView() {
@@ -113,9 +113,9 @@ class RecipeListFragment : Fragment() {
         recipeAdapter.setDeleteMode(isDeleteMode)
 
         if (isDeleteMode) {
-            binding.btnDeleteRecipe.text = "Finish Delete"
+            binding.btnDeleteRecipe.text = getString(R.string.btn_finish_delete)
         } else {
-            binding.btnDeleteRecipe.text = "Delete"
+            binding.btnDeleteRecipe.text = getString(R.string.btn_delete)
         }
     }
 
@@ -135,7 +135,7 @@ class RecipeListFragment : Fragment() {
         binding.layoutEmptyState.visibility = View.VISIBLE
 
         // Update empty state message with category name
-        binding.tvEmptyMessage.text = "Tap the + button below to add your first\n${args.categoryName} recipe!"
+        binding.tvEmptyMessage.text = getString(R.string.empty_recipes_message, args.categoryName)
     }
 
     private fun showRecipeList() {

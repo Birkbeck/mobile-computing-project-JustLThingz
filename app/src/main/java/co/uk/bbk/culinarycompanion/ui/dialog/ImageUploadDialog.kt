@@ -15,14 +15,14 @@ class ImageUploadDialog(
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return AlertDialog.Builder(requireContext())
-            .setTitle("Add Photo")
-            .setItems(arrayOf("Take Photo", "Choose from Gallery")) { _, which ->
+            .setTitle(getString(R.string.dialog_add_photo_title))
+            .setItems(arrayOf(getString(R.string.btn_take_photo), getString(R.string.btn_choose_gallery))) { _, which ->
                 when (which) {
                     0 -> onTakePhoto()
                     1 -> onChooseFromGallery()
                 }
             }
-            .setNegativeButton("Cancel") { dialog, _ ->
+            .setNegativeButton(getString(R.string.btn_cancel)) { dialog, _ ->
                 dialog.dismiss()
             }
             .create()

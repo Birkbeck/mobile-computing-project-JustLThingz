@@ -16,7 +16,7 @@
             android:layout_height="120dp"
             android:scaleType="centerCrop"
             android:background="#E0E0E0"
-            android:contentDescription="Add Recipe Image"
+            android:contentDescription="@string/cd_add_recipe_image"
             android:clickable="true"
             android:focusable="true"
             app:layout_constraintTop_toTopOf="parent"
@@ -27,7 +27,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:hint="Add Recipe Name"
+            android:hint="@string/hint_add_recipe_name"
             android:textSize="24sp"
             android:textStyle="bold"
             android:gravity="center"
@@ -60,7 +60,7 @@
                     android:id="@+id/tv_ingredients_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Ingredients List"
+                    android:text="@string/label_ingredients"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
@@ -70,7 +70,7 @@
                     android:layout_height="120dp"
                     android:layout_marginTop="8dp"
                     android:gravity="top|start"
-                    android:hint="Tap to Edit..."
+                    android:hint="@string/hint_tap_to_edit"
                     android:inputType="textMultiLine"
                     android:textSize="14sp"
                     android:background="#F5F5F5"
@@ -90,7 +90,7 @@
                     android:id="@+id/tv_macros_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Macros List (optional input)"
+                    android:text="@string/label_macros"
                     android:textSize="14sp"
                     android:textStyle="bold" />
 
@@ -112,14 +112,14 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Protein:"
+                            android:text="@string/label_protein"
                             android:textSize="10sp" />
 
                         <EditText
                             android:id="@+id/et_protein"
                             android:layout_width="match_parent"
                             android:layout_height="48dp"
-                            android:hint="grams"
+                            android:hint="@string/hint_grams"
                             android:inputType="numberDecimal"
                             android:textSize="12sp"
                             android:background="#FFFFFF"
@@ -136,14 +136,14 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Carbs:"
+                            android:text="@string/label_carbs"
                             android:textSize="10sp" />
 
                         <EditText
                             android:id="@+id/et_carbs"
                             android:layout_width="match_parent"
                             android:layout_height="48dp"
-                            android:hint="grams"
+                            android:hint="@string/hint_grams"
                             android:inputType="numberDecimal"
                             android:textSize="12sp"
                             android:background="#FFFFFF"
@@ -159,14 +159,14 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Fat:"
+                            android:text="@string/label_fat"
                             android:textSize="10sp" />
 
                         <EditText
                             android:id="@+id/et_fats"
                             android:layout_width="match_parent"
                             android:layout_height="48dp"
-                            android:hint="grams"
+                            android:hint="@string/hint_grams"
                             android:inputType="numberDecimal"
                             android:textSize="12sp"
                             android:background="#FFFFFF"
@@ -185,7 +185,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="Recipe"
+            android:text="@string/label_recipe"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@id/layout_content"
@@ -197,7 +197,7 @@
             android:layout_height="150dp"
             android:layout_marginTop="8dp"
             android:gravity="top|start"
-            android:hint="Tap to Edit..."
+            android:hint="@string/hint_tap_to_edit"
             android:inputType="textMultiLine"
             android:textSize="14sp"
             android:background="#F5F5F5"
@@ -222,14 +222,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
-                android:text="Back"
+                android:text="@string/btn_back"
                 android:textSize="14sp" />
 
             <Button
                 android:id="@+id/btn_save_recipe"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Save Recipe"
+                android:text="@string/btn_save_recipe"
                 android:textSize="14sp" />
 
         </LinearLayout>

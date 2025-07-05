@@ -1,5 +1,85 @@
 <resources>
     <string name="app_name">Culinary Companion</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Navigation / Screen Titles -->
+    <string name="title_home">Culinary Companion</string>
+    <string name="title_recipe_list">%1$s</string> <!-- Category name -->
+    <string name="title_recipe_details">Recipe Details</string>
+    <string name="title_add_recipe">Add Recipe</string>
+    <string name="title_edit_recipe">Edit Recipe</string>
+
+    <!-- Categories -->
+    <string name="category_breakfast">Breakfast</string>
+    <string name="category_brunch">Brunch</string>
+    <string name="category_lunch">Lunch</string>
+    <string name="category_dinner">Dinner</string>
+    <string name="category_dessert">Dessert</string>
+    <string name="category_snacks_drinks_other">Snacks/ Drinks/ Other</string>
+
+    <!-- Buttons -->
+    <string name="btn_home">Home</string>
+    <string name="btn_delete">Delete</string>
+    <string name="btn_finish_delete">Finish Delete</string>
+    <string name="btn_back">Back</string>
+    <string name="btn_save_recipe">Save Recipe</string>
+    <string name="btn_edit_recipe">Edit Recipe</string>
+    <string name="btn_yes">Yes</string>
+    <string name="btn_no">No</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="btn_take_photo">Take Photo</string>
+    <string name="btn_choose_gallery">Choose from Gallery</string>
+
+    <!-- Labels -->
+    <string name="label_ingredients">Ingredients List</string>
+    <string name="label_macros">Macros List (optional input)</string>
+    <string name="label_protein">Protein:</string>
+    <string name="label_carbs">Carbs:</string>
+    <string name="label_fat">Fat:</string>
+    <string name="label_recipe">Recipe</string>
+
+    <!-- Hints -->
+    <string name="hint_add_recipe_name">Add Recipe Name</string>
+    <string name="hint_recipe_name">Recipe Name</string>
+    <string name="hint_tap_to_edit">Tap to Edit…</string>
+    <string name="hint_grams">grams</string>
+    <string name="hint_search_recipes">Search %1$s Recipes</string> <!-- Category name -->
+
+    <!-- Empty State -->
+    <string name="empty_recipes_title">No recipes added yet!</string>
+    <string name="empty_recipes_message">Tap the + button below to add your first\n%1$s recipe!</string> <!-- Category name -->
+
+    <!-- Dialog Titles and Messages -->
+    <string name="dialog_delete_title">Delete Recipe</string>
+    <string name="dialog_delete_message">Are you sure you wish to delete \"%1$s\"?</string> <!-- Recipe name -->
+    <string name="dialog_unsaved_title">Unsaved Changes</string>
+    <string name="dialog_unsaved_message">Return without saving?</string>
+    <string name="dialog_add_photo_title">Add Photo</string>
+
+    <!-- Validation Messages -->
+    <string name="error_recipe_name_required">Recipe name is required</string>
+    <string name="error_ingredients_required">Ingredients are required</string>
+    <string name="error_instructions_required">Instructions are required</string>
+
+    <!-- Success Messages -->
+    <string name="msg_recipe_saved">Recipe saved!</string>
+    <string name="msg_recipe_updated">Recipe updated!</string>
+
+    <!-- Placeholder Messages -->
+    <string name="msg_camera_coming_soon">Camera feature coming soon</string>
+    <string name="msg_gallery_coming_soon">Gallery feature coming soon</string>
+    <string name="msg_image_upload_coming_soon">Image upload coming soon</string>
+
+    <!-- Content Descriptions for Accessibility -->
+    <string name="cd_recipe_image">Recipe Image</string>
+    <string name="cd_add_recipe_image">Add Recipe Image</string>
+    <string name="cd_edit_recipe_image">Edit Recipe Image</string>
+
+    <!-- Placeholder text -->
+    <string name="placeholder_recipe_name">Recipe_Name</string>
+    <string name="placeholder_category_name">Category_Name</string>
+
+    <!-- Macros format -->
+    <string name="macro_protein_format">Protein: %1$s g</string>
+    <string name="macro_carbs_format">Carbs: %1$s g</string>
+    <string name="macro_fats_format">Fats: %1$s g</string>
 </resources>

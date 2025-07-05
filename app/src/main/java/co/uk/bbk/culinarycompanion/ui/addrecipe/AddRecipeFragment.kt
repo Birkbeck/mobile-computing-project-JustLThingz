@@ -89,11 +89,11 @@ class AddRecipeFragment : Fragment() {
         ImageUploadDialog(
             onTakePhoto = {
                 // TODO: Implement camera functionality
-                Toast.makeText(context, "Camera feature coming soon", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(R.string.msg_camera_coming_soon), Toast.LENGTH_SHORT).show()
             },
             onChooseFromGallery = {
                 // TODO: Implement gallery selection
-                Toast.makeText(context, "Gallery feature coming soon", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(R.string.msg_gallery_coming_soon), Toast.LENGTH_SHORT).show()
             }
         ).show(childFragmentManager, "image_upload")
     }
@@ -105,17 +105,17 @@ class AddRecipeFragment : Fragment() {
         val instructions = binding.etRecipeInstructions.text.toString().trim()
 
         if (recipeName.isEmpty()) {
-            binding.etAddRecipeName.error = "Recipe name is required"
+            binding.etAddRecipeName.error = getString(R.string.error_recipe_name_required)
             return
         }
 
         if (ingredients.isEmpty()) {
-            binding.etIngredients.error = "Ingredients are required"
+            binding.etIngredients.error = getString(R.string.error_ingredients_required)
             return
         }
 
         if (instructions.isEmpty()) {
-            binding.etRecipeInstructions.error = "Instructions are required"
+            binding.etRecipeInstructions.error = getString(R.string.error_instructions_required)
             return
         }
 
@@ -135,7 +135,7 @@ class AddRecipeFragment : Fragment() {
             fat = fat
         )
 
-        Toast.makeText(context, "Recipe saved!", Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, getString(R.string.msg_recipe_saved), Toast.LENGTH_SHORT).show()
         findNavController().navigateUp()
     }
 

@@ -14,12 +14,12 @@ class UnsavedChangesDialog(
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return AlertDialog.Builder(requireContext())
-            .setTitle("Unsaved Changes")
-            .setMessage("Return without saving?")
-            .setPositiveButton("Yes") { _, _ ->
+            .setTitle(getString(R.string.dialog_unsaved_title))
+            .setMessage(getString(R.string.dialog_unsaved_message))
+            .setPositiveButton(getString(R.string.btn_yes)) { _, _ ->
                 onConfirm()
             }
-            .setNegativeButton("No") { dialog, _ ->
+            .setNegativeButton(getString(R.string.btn_no)) { dialog, _ ->
                 dialog.dismiss()
             }
             .create()

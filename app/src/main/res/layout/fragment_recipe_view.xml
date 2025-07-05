@@ -13,7 +13,7 @@
             android:id="@+id/btn_edit_recipe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Edit Recipe"
+            android:text="@string/btn_edit_recipe"
             android:textSize="14sp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -24,7 +24,7 @@
             android:layout_height="120dp"
             android:scaleType="centerCrop"
             android:background="#E0E0E0"
-            android:contentDescription="Recipe Image"
+            android:contentDescription="@string/cd_recipe_image"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
@@ -33,7 +33,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="Recipe_Name"
+            android:text="@string/placeholder_recipe_name"
             android:textSize="24sp"
             android:textStyle="bold"
             android:gravity="center"
@@ -64,7 +64,7 @@
                     android:id="@+id/tv_ingredients_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Ingredients List"
+                    android:text="@string/label_ingredients"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
@@ -92,7 +92,7 @@
                     android:id="@+id/tv_macros_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Macros List (optional input)"
+                    android:text="@string/label_macros"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
@@ -108,21 +108,21 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Protien: x g"
+                        android:text="@string/macro_protein_format"
                         android:textSize="12sp"
                         android:layout_marginBottom="4dp" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Carbs: x g"
+                        android:text="@string/macro_carbs_format"
                         android:textSize="12sp"
                         android:layout_marginBottom="4dp" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Fats: x g"
+                        android:text="@string/macro_fats_format"
                         android:textSize="12sp" />
 
                 </LinearLayout>
@@ -136,7 +136,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="Recipe"
+            android:text="@string/label_recipe"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@id/layout_content"
@@ -160,7 +160,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="Back"
+            android:text="@string/btn_back"
             android:textSize="14sp"
             app:layout_constraintTop_toBottomOf="@id/tv_recipe_instructions"
             app:layout_constraintStart_toStartOf="parent"

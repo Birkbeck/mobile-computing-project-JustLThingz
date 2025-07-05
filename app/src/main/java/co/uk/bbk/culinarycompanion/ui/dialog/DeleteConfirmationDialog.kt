@@ -15,12 +15,12 @@ class DeleteConfirmationDialog(
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return AlertDialog.Builder(requireContext())
-            .setTitle("Delete Recipe")
-            .setMessage("Are you sure you wish to delete \"$recipeName\"?")
-            .setPositiveButton("Yes") { _, _ ->
+            .setTitle(getString(R.string.dialog_delete_title))
+            .setMessage(getString(R.string.dialog_delete_message, recipeName))
+            .setPositiveButton(getString(R.string.btn_yes)) { _, _ ->
                 onConfirm()
             }
-            .setNegativeButton("No") { dialog, _ ->
+            .setNegativeButton(getString(R.string.btn_no)) { dialog, _ ->
                 dialog.dismiss()
             }
             .create()

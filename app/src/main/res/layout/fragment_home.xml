@@ -11,7 +11,7 @@
         android:id="@+id/tv_app_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Culinary Companion"
+        android:text="@string/title_home"
         android:textSize="28sp"
         android:textStyle="bold"
         android:layout_marginTop="32dp"
@@ -37,7 +37,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:layout_margin="8dp"
-            android:text="Breakfast"
+            android:text="@string/category_breakfast"
             android:textSize="18sp" />
 
         <Button
@@ -46,7 +46,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:layout_margin="8dp"
-            android:text="Brunch"
+            android:text="@string/category_brunch"
             android:textSize="18sp" />
 
         <Button
@@ -55,7 +55,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:layout_margin="8dp"
-            android:text="Lunch"
+            android:text="@string/category_lunch"
             android:textSize="18sp" />
 
         <Button
@@ -64,7 +64,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:layout_margin="8dp"
-            android:text="Dinner"
+            android:text="@string/category_dinner"
             android:textSize="18sp" />
 
         <Button
@@ -73,7 +73,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:layout_margin="8dp"
-            android:text="Dessert"
+            android:text="@string/category_dessert"
             android:textSize="18sp" />
 
         <Button
@@ -82,7 +82,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:layout_margin="8dp"
-            android:text="Snacks/ Drinks/ Other"
+            android:text="@string/category_snacks_drinks_other"
             android:textSize="18sp" />
 
     </LinearLayout>
