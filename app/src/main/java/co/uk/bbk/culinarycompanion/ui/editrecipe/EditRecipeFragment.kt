@@ -26,7 +26,7 @@ class EditRecipeFragment : Fragment() {
 
     private val args: EditRecipeFragmentArgs by navArgs()
 
-    // Initialize ViewModel
+    // Initialise ViewModel
     private val viewModel: EditRecipeViewModel by viewModels {
         EditRecipeViewModelFactory(
             (requireActivity().application as CulinaryCompanionApplication).repository,

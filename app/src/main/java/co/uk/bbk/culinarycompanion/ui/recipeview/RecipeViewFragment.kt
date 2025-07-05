@@ -23,7 +23,7 @@ class RecipeViewFragment : Fragment() {
 
     private val args: RecipeViewFragmentArgs by navArgs()
 
-    // Initialize ViewModel
+    // Initialise ViewModel
     private val viewModel: RecipeViewViewModel by viewModels {
         RecipeViewViewModelFactory(
             (requireActivity().application as CulinaryCompanionApplication).repository,
@@ -70,14 +70,27 @@ class RecipeViewFragment : Fragment() {
         binding.tvIngredients.text = recipe.ingredients
         binding.tvRecipeInstructions.text = recipe.instructions
 
-        // Display macros if available
-        val macrosList = mutableListOf<String>()
-        recipe.protein?.let { macrosList.add("Protein: $it g") }
-        recipe.carbs?.let { macrosList.add("Carbs: $it g") }
-        recipe.fat?.let { macrosList.add("Fats: $it g") }
+        // Find the TextViews for macros (you'll need to add IDs to them in the layout)
+        // For now, let's update the entire macros section
+        val macrosText = buildString {
+            recipe.protein?.let { append(getString(R.string.macro_protein_format, it.toString())) }
+            recipe.carbs?.let {
+                if (isNotEmpty()) append("\n")
+                append(getString(R.string.macro_carbs_format, it.toString()))
+            }
+            recipe.fat?.let {
+                if (isNotEmpty()) append("\n")
+                append(getString(R.string.macro_fats_format, it.toString()))
+            }
+        }
 
-        // Update the macros display in the layout
-        // Might need to adjust this based on layout
+        // If you have a single TextView for all macros, use:
+        // binding.tvMacros.text = macrosText
+
+        // Or hide the macros section if no values
+        if (macrosText.isEmpty()) {
+            binding.layoutMacros.visibility = View.GONE
+        }
     }
 
     private fun displayPlaceholderData() {
