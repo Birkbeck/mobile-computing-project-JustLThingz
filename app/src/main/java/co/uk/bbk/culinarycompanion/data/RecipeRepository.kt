@@ -1,3 +1,14 @@
+/**
+ * Culinary Companion - Recipe Management App
+ * BSc Computing Coursework 2
+ *
+ * Repository class implementing the repository pattern for data access.
+ * Acts as a single source of truth between the database and ViewModels.
+ *
+ * @author Levi GIRARD
+ * @studentId 13401249
+ */
+
 package co.uk.bbk.culinarycompanion.data
 
 import kotlinx.coroutines.flow.Flow
@@ -5,7 +16,10 @@ import kotlinx.coroutines.flow.Flow
 /**
  * Repository class that provides a clean API for data access to the rest of the application
  * Acts as a single source of truth for recipe data
+ *
+ * @param recipeDao The DAO instance for database operations
  */
+
 class RecipeRepository(private val recipeDao: RecipeDAO) {
 
     /**

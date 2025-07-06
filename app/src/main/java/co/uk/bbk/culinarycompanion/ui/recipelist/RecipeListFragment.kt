@@ -1,3 +1,14 @@
+/**
+ * Culinary Companion - Recipe Management App
+ * BSc Computing Coursework 2
+ *
+ * Recipe list screen showing all recipes for a selected category.
+ * Supports search, add, view, and delete operations.
+ *
+ * @author Levi GIRARD
+ * @studentId 13401249
+ */
+
 package co.uk.bbk.culinarycompanion.ui.recipelist
 
 import android.os.Bundle
@@ -56,6 +67,9 @@ class RecipeListFragment : Fragment() {
         observeRecipes()
     }
 
+    /**
+     * Configure UI elements with category-specific information
+     */
     private fun setupUI() {
         // Set category name
         binding.tvCategoryName.text = args.categoryName
@@ -64,6 +78,9 @@ class RecipeListFragment : Fragment() {
         binding.searchRecipes.queryHint = getString(R.string.hint_search_recipes, args.categoryName)
     }
 
+    /**
+     * Initialise RecyclerView with adapter and layout manager
+     */
     private fun setupRecyclerView() {
         recipeAdapter = RecipeAdapter(
             onRecipeClick = { recipe ->
@@ -82,6 +99,9 @@ class RecipeListFragment : Fragment() {
         }
     }
 
+    /**
+     * Configure search functionality with text change listener
+     */
     private fun setupSearchView() {
         binding.searchRecipes.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
@@ -95,6 +115,9 @@ class RecipeListFragment : Fragment() {
         })
     }
 
+    /**
+     * Set up click listeners for navigation and mode buttons
+     */
     private fun setupButtons() {
         binding.btnHome.setOnClickListener {
             findNavController().navigateUp()
@@ -109,6 +132,10 @@ class RecipeListFragment : Fragment() {
         }
     }
 
+    /**
+     * Toggle between normal and delete mode
+     * Updates UI and adapter state accordingly
+     */
     private fun toggleDeleteMode() {
         isDeleteMode = !isDeleteMode
         recipeAdapter.setDeleteMode(isDeleteMode)
@@ -120,6 +147,10 @@ class RecipeListFragment : Fragment() {
         }
     }
 
+    /**
+     * Observe recipe list changes and update UI
+     * Shows empty state when no recipes exist
+     */
     private fun observeRecipes() {
         viewModel.recipes.observe(viewLifecycleOwner) { recipes ->
             if (recipes.isEmpty()) {
@@ -131,6 +162,9 @@ class RecipeListFragment : Fragment() {
         }
     }
 
+    /**
+     * Display empty state with instructions to add first recipe
+     */
     private fun showEmptyState() {
         binding.recyclerView.visibility = View.GONE
         binding.layoutEmptyState.visibility = View.VISIBLE
@@ -139,23 +173,38 @@ class RecipeListFragment : Fragment() {
         binding.tvEmptyMessage.text = getString(R.string.empty_recipes_message, args.categoryName)
     }
 
+    /**
+     * Display recipe list and hide empty state
+     */
     private fun showRecipeList() {
         binding.recyclerView.visibility = View.VISIBLE
         binding.layoutEmptyState.visibility = View.GONE
     }
 
+    /**
+     * Navigate to recipe detail view
+     * @param recipeId The ID of the recipe to display
+     */
     private fun navigateToRecipeView(recipeId: Int) {
         val action = RecipeListFragmentDirections
             .actionRecipeListFragmentToRecipeViewFragment(recipeId)
         findNavController().navigate(action)
     }
 
+    /**
+     * Navigate to add recipe screen
+     * Passes current category as argument
+     */
     private fun navigateToAddRecipe() {
         val action = RecipeListFragmentDirections
             .actionRecipeListFragmentToAddRecipeFragment(args.categoryName)
         findNavController().navigate(action)
     }
 
+    /**
+     * Show delete confirmation dialog
+     * @param recipe The recipe to be deleted
+     */
     private fun showDeleteConfirmation(recipe: Recipe) {
         DeleteConfirmationDialog(recipe.title) {
             viewModel.deleteRecipe(recipe)

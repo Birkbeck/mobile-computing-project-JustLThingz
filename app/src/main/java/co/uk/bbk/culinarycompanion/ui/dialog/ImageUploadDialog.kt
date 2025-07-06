@@ -1,3 +1,14 @@
+/**
+ * Culinary Companion - Recipe Management App
+ * BSc Computing Coursework 2
+ *
+ * Image source selection dialog.
+ * Placeholder for future camera/gallery implementation.
+ *
+ * @author Levi GIRARD
+ * @studentId 13401249
+ */
+
 package co.uk.bbk.culinarycompanion.ui.dialog
 
 import android.app.Dialog
@@ -8,6 +19,9 @@ import co.uk.bbk.culinarycompanion.R
 
 /**
  * Dialog for choosing image source
+ *
+ * @param onTakePhoto Callback for camera option selection
+ * @param onChooseFromGallery Callback for gallery option selection
  */
 class ImageUploadDialog(
     private val onTakePhoto: () -> Unit,

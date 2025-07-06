@@ -1,3 +1,14 @@
+/**
+ * Culinary Companion - Recipe Management App
+ * BSc Computing Coursework 2
+ *
+ * Edit recipe screen for modifying existing recipes.
+ * Pre-populates fields with current recipe data.
+ *
+ * @author Levi GIRARD
+ * @studentId 13401249
+ */
+
 package co.uk.bbk.culinarycompanion.ui.editrecipe
 
 import android.os.Bundle
@@ -75,6 +86,10 @@ class EditRecipeFragment : Fragment() {
         }
     }
 
+    /**
+     * Observe recipe data from ViewModel
+     * Loads data when available
+     */
     private fun observeRecipe() {
         viewModel.recipe.observe(viewLifecycleOwner) { recipe ->
             recipe?.let {
@@ -84,6 +99,10 @@ class EditRecipeFragment : Fragment() {
         }
     }
 
+    /**
+     * Populate form fields with recipe data
+     * @param recipe The recipe to edit
+     */
     private fun loadRecipeData(recipe: co.uk.bbk.culinarycompanion.data.Recipe) {
         binding.etRecipeName.setText(recipe.title)
         binding.etIngredients.setText(recipe.ingredients)
@@ -102,6 +121,10 @@ class EditRecipeFragment : Fragment() {
         binding.etRecipeInstructions.setText("1) crack eggs into bowl\n2) add flour\n3) add baking powder\n4) whisk until combined\nTap to Edit...")
     }
 
+    /**
+     * Check if recipe data has been modified
+     * @return true if any fields differ from original values
+     */
     private fun hasUnsavedChanges(): Boolean {
         originalRecipe?.let { original ->
             return binding.etRecipeName.text.toString() != original.title ||
@@ -133,6 +156,10 @@ class EditRecipeFragment : Fragment() {
         ).show(childFragmentManager, "image_upload")
     }
 
+    /**
+     * Validate and update recipe in database
+     * Shows appropriate error messages for invalid input
+     */
     private fun saveRecipe() {
         // Validate input
         val recipeName = binding.etRecipeName.text.toString().trim()

@@ -1,3 +1,14 @@
+/**
+ * Culinary Companion - Recipe Management App
+ * BSc Computing Coursework 2
+ *
+ * Add recipe screen for creating new recipes.
+ * Includes validation and unsaved changes protection.
+ *
+ * @author Levi GIRARD
+ * @studentId 13401249
+ */
+
 package co.uk.bbk.culinarycompanion.ui.addrecipe
 
 import android.os.Bundle
@@ -49,6 +60,9 @@ class AddRecipeFragment : Fragment() {
         setupImagePicker()
     }
 
+    /**
+     * Configure button click listeners for save and back actions
+     */
     private fun setupButtons() {
         binding.btnBack.setOnClickListener {
             // Check for unsaved changes before navigating back
@@ -64,6 +78,10 @@ class AddRecipeFragment : Fragment() {
         }
     }
 
+    /**
+     * Set up image picker click listener
+     * Currently shows placeholder dialog for future implementation
+     */
     private fun setupImagePicker() {
         binding.ivDishImage.setOnClickListener {
             // Will show image upload dialog
@@ -71,6 +89,10 @@ class AddRecipeFragment : Fragment() {
         }
     }
 
+    /**
+     * Check if any fields have been modified
+     * @return true if any input fields contain data
+     */
     private fun hasUnsavedChanges(): Boolean {
         return binding.etAddRecipeName.text.isNotEmpty() ||
                 binding.etIngredients.text.isNotEmpty() ||
@@ -80,12 +102,19 @@ class AddRecipeFragment : Fragment() {
                 binding.etFats.text.isNotEmpty()
     }
 
+    /**
+     * Display dialog warning about unsaved changes
+     */
     private fun showUnsavedChangesDialog() {
         UnsavedChangesDialog {
             findNavController().navigateUp()
         }.show(childFragmentManager, "unsaved_changes")
     }
 
+    /**
+     * Show image source selection dialog
+     * Placeholder for future camera/gallery implementation
+     */
     private fun showImageUploadDialog() {
         ImageUploadDialog(
             onTakePhoto = {
@@ -99,6 +128,10 @@ class AddRecipeFragment : Fragment() {
         ).show(childFragmentManager, "image_upload")
     }
 
+    /**
+     * Validate input and save recipe to database
+     * Shows appropriate error messages for invalid input
+     */
     private fun saveRecipe() {
         // Validate input
         val recipeName = binding.etAddRecipeName.text.toString().trim()

@@ -1,3 +1,14 @@
+/**
+ * Culinary Companion - Recipe Management App
+ * BSc Computing Coursework 2
+ *
+ * Warning dialog for unsaved changes.
+ * Prevents accidental loss of user input.
+ *
+ * @author Levi GIRARD
+ * @studentId 13401249
+ */
+
 package co.uk.bbk.culinarycompanion.ui.dialog
 
 import android.app.Dialog
@@ -8,6 +19,8 @@ import co.uk.bbk.culinarycompanion.R
 
 /**
  * Dialog to warn about unsaved changes
+ *
+ * @param onConfirm Callback function executed when user confirms navigation
  */
 class UnsavedChangesDialog(
     private val onConfirm: () -> Unit

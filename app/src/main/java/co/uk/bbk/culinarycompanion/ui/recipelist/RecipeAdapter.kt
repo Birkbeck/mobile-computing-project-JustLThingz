@@ -1,3 +1,14 @@
+/**
+ * Culinary Companion - Recipe Management App
+ * BSc Computing Coursework 2
+ *
+ * RecyclerView adapter for displaying recipe cards.
+ * Supports both normal and delete modes with different UI states.
+ *
+ * @author Levi GIRARD
+ * @studentId 13401249
+ */
+
 package co.uk.bbk.culinarycompanion.ui.recipelist
 
 import android.view.LayoutInflater
@@ -12,6 +23,9 @@ import co.uk.bbk.culinarycompanion.databinding.ItemRecipeCardBinding
 /**
  * RecyclerView adapter for displaying recipe cards
  * Handles both normal and delete modes
+ *
+ * @param onRecipeClick Callback for recipe selection
+ * @param onDeleteClick Callback for delete button click
  */
 class RecipeAdapter(
     private val onRecipeClick: (Recipe) -> Unit,
@@ -20,6 +34,11 @@ class RecipeAdapter(
 
     private var isDeleteMode = false
 
+    /**
+     * Toggle delete mode for the adapter
+     * Updates UI to show/hide delete buttons
+     * @param enabled True to enable delete mode
+     */
     fun setDeleteMode(enabled: Boolean) {
         isDeleteMode = enabled
         notifyDataSetChanged()

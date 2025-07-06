@@ -1,3 +1,14 @@
+/**
+ * Culinary Companion - Recipe Management App
+ * BSc Computing Coursework 2
+ *
+ * Home screen fragment displaying recipe category selection.
+ * Entry point of the app showing six category buttons.
+ *
+ * @author Levi GIRARD
+ * @studentId 13401249
+ */
+
 package co.uk.bbk.culinarycompanion.ui.home
 
 import android.os.Bundle
@@ -36,6 +47,7 @@ class HomeFragment : Fragment() {
 
     /**
      * Set up click listeners for category buttons
+     * Each button navigates to RecipeListFragment with the selected category
      */
     private fun setupCategoryButtons() {
         binding.btnBreakfast.setOnClickListener {
@@ -65,6 +77,7 @@ class HomeFragment : Fragment() {
 
     /**
      * Navigate to RecipeListFragment with the selected category
+     * @param categoryName The display name of the selected category
      */
     private fun navigateToRecipeList(categoryName: String) {
         val action = HomeFragmentDirections

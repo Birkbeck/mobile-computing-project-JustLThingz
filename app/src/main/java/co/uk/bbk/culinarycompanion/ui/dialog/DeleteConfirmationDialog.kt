@@ -1,3 +1,14 @@
+/**
+ * Culinary Companion - Recipe Management App
+ * BSc Computing Coursework 2
+ *
+ * Confirmation dialog for recipe deletion.
+ * Prevents accidental deletion of recipes.
+ *
+ * @author Levi GIRARD
+ * @studentId 13401249
+ */
+
 package co.uk.bbk.culinarycompanion.ui.dialog
 
 import android.app.Dialog
@@ -7,7 +18,10 @@ import androidx.fragment.app.DialogFragment
 import co.uk.bbk.culinarycompanion.R
 
 /**
- * Dialogue to confirm recipe deletion
+ * Dialog to confirm recipe deletion
+ *
+ * @param recipeName The name of the recipe to be deleted
+ * @param onConfirm Callback function executed when user confirms deletion
  */
 class DeleteConfirmationDialog(
     private val recipeName: String,

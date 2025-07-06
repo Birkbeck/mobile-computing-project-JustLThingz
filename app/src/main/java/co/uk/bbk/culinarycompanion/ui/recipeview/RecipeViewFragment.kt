@@ -1,3 +1,14 @@
+/**
+ * Culinary Companion - Recipe Management App
+ * BSc Computing Coursework 2
+ *
+ * Recipe detail view screen showing full recipe information.
+ * Displays ingredients, instructions, and optional macros.
+ *
+ * @author Levi GIRARD
+ * @studentId 13401249
+ */
+
 package co.uk.bbk.culinarycompanion.ui.recipeview
 
 import android.os.Bundle
@@ -57,6 +68,10 @@ class RecipeViewFragment : Fragment() {
         }
     }
 
+    /**
+     * Observe recipe data from ViewModel
+     * Updates UI when recipe is loaded
+     */
     private fun observeRecipe() {
         viewModel.recipe.observe(viewLifecycleOwner) { recipe ->
             recipe?.let {
@@ -65,6 +80,10 @@ class RecipeViewFragment : Fragment() {
         }
     }
 
+    /**
+     * Display recipe data in UI elements
+     * @param recipe The recipe to display
+     */
     private fun displayRecipe(recipe: co.uk.bbk.culinarycompanion.data.Recipe) {
         binding.tvRecipeName.text = recipe.title
         binding.tvIngredients.text = recipe.ingredients
@@ -106,6 +125,9 @@ class RecipeViewFragment : Fragment() {
         // For now, showing placeholder values
     }
 
+    /**
+     * Navigate to edit screen for current recipe
+     */
     private fun navigateToEditRecipe() {
         val action = RecipeViewFragmentDirections
             .actionRecipeViewFragmentToEditRecipeFragment(args.recipeId)

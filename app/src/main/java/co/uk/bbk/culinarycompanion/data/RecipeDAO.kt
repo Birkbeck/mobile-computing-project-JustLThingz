@@ -1,3 +1,14 @@
+/**
+ * Culinary Companion - Recipe Management App
+ * BSc Computing Coursework 2
+ *
+ * Data Access Object providing Room database operations for Recipe entities.
+ * Defines all CRUD operations and queries for recipe management.
+ *
+ * @author Levi GIRARD
+ * @studentId 13401249
+ */
+
 package co.uk.bbk.culinarycompanion.data
 
 import androidx.room.*
@@ -7,6 +18,7 @@ import kotlinx.coroutines.flow.Flow
  * Data Access Object for Recipe operations
  * Provides methods to perform CRUD operations on the recipes table
  */
+
 @Dao
 interface RecipeDAO {
 

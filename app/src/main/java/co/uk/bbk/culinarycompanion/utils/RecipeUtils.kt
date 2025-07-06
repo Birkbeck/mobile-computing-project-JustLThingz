@@ -1,3 +1,14 @@
+/**
+ * Culinary Companion - Recipe Management App
+ * BSc Computing Coursework 2
+ *
+ * Utility functions for recipe text formatting.
+ * Handles numbering for ingredients and instructions.
+ *
+ * @author Levi GIRARD
+ * @studentId 13401249
+ */
+
 package co.uk.bbk.culinarycompanion.utils
 
 /**
@@ -7,6 +18,9 @@ object RecipeUtils {
 
     /**
      * Format ingredients string with numbered lines
+     * Filters empty lines and adds sequential numbering
+     * @param ingredients Raw ingredients text
+     * @return Formatted ingredients with numbers
      */
     fun formatIngredients(ingredients: String): String {
         return ingredients.lines()
@@ -19,6 +33,9 @@ object RecipeUtils {
 
     /**
      * Format instructions string with numbered steps
+     * Filters empty lines and adds sequential numbering
+     * @param instructions Raw instructions text
+     * @return Formatted instructions with step numbers
      */
     fun formatInstructions(instructions: String): String {
         return instructions.lines()
@@ -31,6 +48,9 @@ object RecipeUtils {
 
     /**
      * Parse ingredients from formatted string
+     * Removes numbering to restore original format
+     * @param formattedIngredients Numbered ingredients text
+     * @return Clean ingredients without numbers
      */
     fun parseIngredients(formattedIngredients: String): String {
         return formattedIngredients.lines()
@@ -43,6 +63,9 @@ object RecipeUtils {
 
     /**
      * Parse instructions from formatted string
+     * Removes numbering to restore original format
+     * @param formattedInstructions Numbered instructions text
+     * @return Clean instructions without numbers
      */
     fun parseInstructions(formattedInstructions: String): String {
         return formattedInstructions.lines()

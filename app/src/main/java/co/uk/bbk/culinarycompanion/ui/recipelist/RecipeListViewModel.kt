@@ -1,3 +1,14 @@
+/**
+ * Culinary Companion - Recipe Management App
+ * BSc Computing Coursework 2
+ *
+ * ViewModel for RecipeListFragment managing recipe list data.
+ * Handles search functionality and delete operations.
+ *
+ * @author Levi GIRARD
+ * @studentId 13401249
+ */
+
 package co.uk.bbk.culinarycompanion.ui.recipelist
 
 import androidx.lifecycle.*
@@ -11,6 +22,9 @@ import kotlinx.coroutines.launch
 /**
  * ViewModel for RecipeListFragment
  * Manages recipe data for a specific category
+ *
+ * @param repository The repository for data operations
+ * @param category The category to filter recipes
  */
 class RecipeListViewModel(
     private val repository: RecipeRepository,
@@ -36,6 +50,8 @@ class RecipeListViewModel(
 
     /**
      * Update search query
+     * Filters recipes based on title and ingredients
+     * @param query The search term
      */
     fun searchRecipes(query: String) {
         searchQuery.value = query
@@ -43,6 +59,8 @@ class RecipeListViewModel(
 
     /**
      * Delete a recipe
+     * Removes recipe from database asynchronously
+     * @param recipe The recipe to delete
      */
     fun deleteRecipe(recipe: Recipe) {
         viewModelScope.launch {

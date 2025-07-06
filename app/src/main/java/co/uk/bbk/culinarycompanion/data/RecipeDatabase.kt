@@ -1,3 +1,14 @@
+/**
+ * Culinary Companion - Recipe Management App
+ * BSc Computing Coursework 2
+ *
+ * Room database configuration class implementing singleton pattern.
+ * Manages the database instance and provides access to DAOs.
+ *
+ * @author Levi GIRARD
+ * @studentId 13401249
+ */
+
 package co.uk.bbk.culinarycompanion.data
 
 import android.content.Context
@@ -10,6 +21,7 @@ import androidx.room.RoomDatabase
  * This class defines the database configuration and serves as the main access point
  * for the underlying connection to the app's persisted data
  */
+
 @Database(
     entities = [Recipe::class],
     version = 1,
